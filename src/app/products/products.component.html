@@ -1,0 +1,48 @@
+<h1 style="position: relative; left: 1rem">{{ storeName }}</h1>
+<img
+  style="position: absolute; left: 2rem; top: 0.5rem"
+  class="rounded-circle"
+  src="{{ storeLogo }}"
+  alt=""
+/>
+<!-- <h3 [ngClass]="{ hide: discount == 0}">
+  We offer an explicit discount of {{ discount }}%
+</h3> -->
+<!-- Another way to make the same thing but using ngif  -->
+<h3 *ngIf="discount != 15">We offer an explicit discount of {{ discount }}%</h3>
+
+<label style="position: relative; left: 1rem" for="">Client Name</label>
+<br />
+<input
+  style="position: relative; left: 1rem"
+  type="text"
+  [value]="clientName"
+  (keyup)="change(element.value)"
+  #element
+/>
+<!-- Another way to make the same thing  -->
+<!-- <input type="text" [(ngModel)]="clientName" > -->
+<p style="position: relative; left: 1rem">{{ clientName }}</p>
+
+<select class="mb-4 ms-3" name="" id="">
+  <option *ngFor="let item of categoryList" value="">{{ item.name }}</option>
+</select>
+
+<div class="d-flex justify-content-center">
+  <div *ngFor="let p of productList" class="card me-4" style="width: 18rem">
+    <img src="{{ p.img }}" class="card-img-top" alt="..." />
+    <div class="card-body">
+      <h5 class="card-title">{{ p.name }}</h5>
+
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">ID : {{ p.id }}</li>
+        <li class="list-group-item">Product : {{ p.name }}</li>
+        <li class="list-group-item">Quantity : {{ p.quantity }}</li>
+        <li class="list-group-item">Price : {{ p.price }}</li>
+      </ul>
+      <div class="card-body">
+        <button class="btn btn-success">Add to Cart</button>
+      </div>
+    </div>
+  </div>
+</div>
